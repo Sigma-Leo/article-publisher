@@ -1,0 +1,22 @@
+{
+  "base_url": "https://www.autoengine.com/motor/dealer_admin/go_api/article/create",
+  "request_interval": 3,
+  "headers": {
+    "accept": "*/*",
+    "accept-language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+    "content-type": "application/json;charset=UTF-8",
+    "jdc-saas-header-app-id": "255, 240",
+    "origin": "https://www.autoengine.com",
+    "priority": "u=1, i",
+    "referer": "https://www.autoengine.com/jdc/dealer/info/contentPublish/sceneMarketing",
+    "sec-ch-ua": "\"Chromium\";v=\"152\", \"Not?A_Brand\";v=\"24\", \"Microsoft Edge\";v=\"152\"",
+    "sec-ch-ua-mobile": "?0",
+    "sec-ch-ua-platform": "\"Windows\"",
+    "sec-fetch-dest": "empty",
+    "sec-fetch-mode": "cors",
+    "sec-fetch-site": "same-origin",
+    "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0",
+    "x-requested-with": "XMLHttpRequest"
+  },
+  "cookie": "has_biz_token=false; is_staff_user=false; tt_scid=DF3yRNp1CW8yX0IA1GnCuaaLrCXQoCOSSn1jnwF.aVL8uzlD9DOxOsIFx2OJyJuV7d8b; passport_mfa_token=CjdBiWyi3%2FjM65jzIAul1aTA9ui1o78UjCud4CI%2Fe2tjbywMhruWdsVSyF%2BKjr6ZXI%2FVKNDwW0IFGkoKPAAAAAAAAAAAAABQp6B%2FoIeIzYiiMj%2Fb9ASOBHQAPspgmKLjSwSXDXw%2B%2FnkGrLIH5YLBBYJfdQNQMgVG8xC82pYOGPax0WwgAiIBA3luT2w%3D; d_ticket=0dea1aca16a116a3af916fed0165235c56bfe; n_mh=CkkTktglDuHzfPl2s5waqQkbIVXpTNR17w217r-CdRo; sid_guard=2dbb21b8c7db5200a6479915d10e2abf%7C1783933139%7C5184000%7CFri%2C+11-Sep-2026+08%3A58%3A59+GMT; uid_tt=5bc5f77294c89a220623cbef05822f1f; uid_tt_ss=5bc5f77294c89a220623cbef05822f1f; sid_tt=2dbb21b8c7db5200a6479915d10e2abf; sessionid=2dbb21b8c7db5200a6479915d10e2abf; sessionid_ss=2dbb21b8c7db5200a6479915d10e2abf; session_tlb_tag=sttt%7C11%7CLbshuMfbUgCmR5kV0Q4qv__________jdljl-immenUHOF_2is6WDlzWiJZmjiX0oizIazTSzbQ%3D; sid_ucp_v1=1.0.0-KDY2YTJlZDczMWE2MDBmMDIxMDdmYjI4NjRiMzVhMDI0ZDkwNmY5OTUKIgj-o7Dlooz_AxDT0dLSBhiMsBIgDDC4louZBjgCQPEHSAQaAmxmIiAyZGJiMjFiOGM3ZGI1MjAwYTY0Nzk5MTVkMTBlMmFiZg; ssid_ucp_v1=1.0.0-KDY2YTJlZDczMWE2MDBmMDIxMDdmYjI4NjRiMzVhMDI0ZDkwNmY5OTUKIgj-o7Dlooz_AxDT0dLSBhiMsBIgDDC4louZBjgCQPEHSAQaAmxmIiAyZGJiMjFiOGM3ZGI1MjAwYTY0Nzk5MTVkMTBlMmFiZg; __security_mc_61_s_sdk_sign_data_key_web_protect=20861be3-4c26-b43c; _bd_ticket_crypt_cookie=2b4bbb592b9e86fc0646e12bad4bc40b; jdc_frame_saas=7b2270726f647563745f6b6579223a22706b31222c226170705f6b6579223a22313030333236227d396fa56c; odin_tt=8c61d41dba144baade170ca75088c85c20c6baca5a47c20331c5788cfd941f2615e1caeeceb2dbf221a5d2cb85cb676ba8de71fde1ab07dec55ccecf32510448; s_v_web_id=verify_ms30nsu2_uTjh58LH_00cb_42Ow_BEZi_jYw2UXK3fFZs; ttwid=1%7Chzw1FFXmplk12Fr9HlKmu6HTwAt2GRmVGrQs6K3Kdnw%7C1785557177%7Cb76a406157e50a39d56c69ba973f32d9e90861ea6d31e6a8cefdfa06e24d9901; fw_account_session_key=088ea080fed7cce88c631208303030315f3333341800200028fea3b0e5a28cff0330d6d1d2d2063a20643734336363623235633661623137306633366332323030626666313632356140004a390a06313030333236122f0a2d088cb01212270a063130303332361208303030315f333334188ea080fed7cce88c6320fea3b0e5a28cff03280050e08db5d3064dab7677; jdc_identity_code=2acdef2e517c9895e7e91d11b5ce000d; __security_mc_61_s_sdk_crypt_sdk=855ec40e-4800-8576; __security_mc_61_s_sdk_cert_key=8e787ba5-42cc-b9d2; passport_csrf_token=559b7138494616a2e8230b5c75ab6392; passport_csrf_token_default=559b7138494616a2e8230b5c75ab6392; _tea_utm_cache_301068=undefined"
+}
