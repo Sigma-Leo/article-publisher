@@ -1,4 +1,4 @@
-const API = window.API_BASE || "http://localhost:8000";
+const API = "https://article-publisher-02n9.onrender.com";
 const state = { articles: [], selected: new Set(), current: -1, media: [], cookieMode: "add", paused: false };
 const $ = id => document.getElementById(id);
 const log = value => { $("log").textContent += `${new Date().toLocaleTimeString()} ${value}\n`; $("log").scrollTop = $("log").scrollHeight; };
