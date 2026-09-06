@@ -7,7 +7,7 @@ from pathlib import Path
 from typing import Any
 
 import requests
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, Header, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 
@@ -31,6 +31,11 @@ class PublishRequest(BaseModel):
     cookie_name: str
     min_interval: float = Field(default=10, ge=0)
     max_interval: float = Field(default=15, ge=0)
+
+
+class DataImport(BaseModel):
+    articles: list[dict]
+    cookies: list[CookieInput]
 
 
 def read_json(path: Path, default: Any) -> Any:
@@ -142,6 +147,16 @@ def update_cookie(name: str, item: CookieInput):
 def delete_cookie(name: str):
     write_json(COOKIES_PATH, [item for item in cookies() if item.get("name") != name])
     return {"ok": True}
+
+
+@app.post("/api/admin/import")
+def import_data(data: DataImport, x_admin_token: str | None = Header(default=None)):
+    expected_token = os.getenv("ADMIN_TOKEN", "")
+    if not expected_token or x_admin_token != expected_token:
+        raise HTTPException(status_code=401, detail="管理员令牌无效")
+    write_json(ARTICLES_PATH, data.articles)
+    write_json(COOKIES_PATH, [item.model_dump() for item in data.cookies])
+    return {"ok": True, "articles": len(data.articles), "cookies": len(data.cookies)}
 
 
 @app.get("/api/media")
