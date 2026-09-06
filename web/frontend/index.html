@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>稿件发布工作台</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div><strong>稿件发布工作台</strong><span id="health">连接中...</span></div>
+    <div class="toolbar">
+      <button id="refresh">刷新数据</button>
+      <select id="cookie"></select>
+      <button id="editCookie">编辑 Cookie</button>
+      <button id="deleteCookie">删除 Cookie</button>
+      <button id="addCookie">新增 Cookie</button>
+      <button class="primary" id="publish">发布选中</button>
+      <button class="danger" id="pause" disabled>暂停发布</button>
+      <label class="interval">间隔 <input id="minInterval" type="number" min="0" value="10"> 至 <input id="maxInterval" type="number" min="0" value="15"> 秒</label>
+    </div>
+  </header>
+  <main class="layout">
+    <aside class="sidebar">
+      <div class="side-head"><h2>稿件列表</h2><button id="selectAll">全选</button></div>
+      <p class="hint">选择稿件后批量发布</p>
+      <div id="articles" class="article-list"></div>
+    </aside>
+    <section class="editor">
+      <div class="section-head"><h2>稿件编辑</h2><div class="actions"><button id="newArticle">新建</button><button id="copyArticle">复制</button><button id="deleteArticle" class="danger">删除</button><button id="moveUp">上移</button><button id="moveDown">下移</button><button id="save" class="primary">保存</button></div></div>
+      <label>标题</label><input id="title">
+      <label>正文 content</label><textarea id="content" class="content"></textarea>
+      <div class="cover-head"><label>封面 pgcFeedCovers（JSON 数组）</label><div><button id="media">从接口选择配图</button><button id="preview">预览配图</button></div></div>
+      <textarea id="covers" class="covers"></textarea>
+      <pre id="log" class="log"></pre>
+    </section>
+  </main>
+  <dialog id="mediaDialog"><div class="dialog-head"><h2>接口图片库</h2><button data-close>关闭</button></div><div id="mediaGrid" class="media-grid"></div><div class="dialog-foot"><button id="loadMedia">加载图片</button><button id="useMedia" class="primary">使用选中图片</button></div></dialog>
+  <dialog id="cookieDialog"><div class="dialog-head"><h2 id="cookieDialogTitle">新增 Cookie 账号</h2><button data-cookie-close>关闭</button></div><label>账号名称</label><input id="cookieName" placeholder="例如：中春"><label>Cookie 完整字符串</label><textarea id="cookieValue" rows="7" placeholder="粘贴浏览器中的 Cookie"></textarea><div class="dialog-foot"><button data-cookie-close>取消</button><button id="saveCookie" class="primary">保存 Cookie</button></div></dialog>
+  <script src="app.js"></script>
+</body>
+</html>
