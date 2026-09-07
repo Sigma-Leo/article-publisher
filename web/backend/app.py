@@ -76,10 +76,20 @@ def image_objects(payload: Any) -> list[dict]:
         if isinstance(preview, str) and preview.startswith("URLs://"):
             preview = "https://" + preview[7:]
         if isinstance(url, str) and url.startswith(("http://", "https://")):
-            item = copy.deepcopy(payload)
-            item.update({"url": url, "preview_url": preview, "id": payload.get("ResourceID", payload.get("id", ""))})
-            item.setdefault("width", 280)
-            item.setdefault("height", 210)
+            width = payload.get("width") or payload.get("image_width") or 280
+            height = payload.get("height") or payload.get("image_height") or 210
+            resource_id = payload.get("ResourceID", payload.get("id", ""))
+            uri = payload.get("uri") or payload.get("originUri") or ""
+            item = {
+                "url": url,
+                "height": height,
+                "width": width,
+                "uri": uri,
+                "originUri": payload.get("originUri") or uri,
+                "thumbWidth": payload.get("thumbWidth") or width,
+                "thumbHeight": payload.get("thumbHeight") or height,
+                "id": resource_id,
+            }
             result.append(item)
         for value in payload.values():
             result.extend(image_objects(value))
