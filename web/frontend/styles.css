@@ -46,6 +46,11 @@ textarea { resize: vertical; line-height: 1.55; }
 .cover-head { justify-content: space-between; }
 .cover-head label { margin-bottom: 0; }
 .cover-head div { display: flex; gap: 7px; }
+.preview-wrap { position: relative; display: inline-flex; }
+.cover-hover-preview { position: absolute; right: 0; top: calc(100% + 8px); z-index: 10; display: none; grid-template-columns: repeat(3, 110px); gap: 7px; width: max-content; max-width: 360px; padding: 9px; background: rgba(250,253,255,.96); border: 1px solid var(--line); border-radius: 12px; box-shadow: 0 16px 42px rgba(29,55,84,.2); }
+.cover-hover-preview.visible { display: grid; }
+.cover-hover-preview img { width: 110px; height: 82px; object-fit: contain; background: #f2f6fa; border-radius: 6px; }
+.cover-hover-preview .preview-empty { grid-column: 1 / -1; padding: 8px; color: var(--muted); font-size: 12px; }
 .log { height: 130px; overflow: auto; margin: 18px 0 0; padding: 13px; color: #dce9ff; background: #1c3153; border-radius: 11px; white-space: pre-wrap; font: 12px/1.55 Consolas, monospace; }
 .media-grid { display: grid; grid-template-columns: repeat(4,minmax(140px,1fr)); gap: 12px; max-height: 65vh; overflow: auto; padding: 4px; }
 .media-card { padding: 7px; background: #fff; border: 1px solid var(--line); border-radius: 11px; }

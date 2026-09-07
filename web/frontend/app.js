@@ -29,6 +29,17 @@ function renderMedia() { $("mediaGrid").innerHTML = state.media.map((image, inde
 async function loadMedia() { const name = $("cookie").value; if (!name) return alert("请先选择 Cookie"); const data = await api(`/api/media?cookie_name=${encodeURIComponent(name)}&page=1&page_size=100`); state.media = data.images; renderMedia(); log(`已加载 ${state.media.length} 张图片`); }
 function useMedia() { const selected = [...document.querySelectorAll(".media-card input:checked")].map(input => state.media[Number(input.closest(".media-card").dataset.media)]); if (!selected.length) return alert("请选择图片"); $("covers").value = JSON.stringify(selected, null, 2); $("mediaDialog").close(); }
 function previewCovers() { try { const items = JSON.parse($("covers").value || "[]"); const win = window.open("", "_blank"); win.document.write(`<title>配图预览</title><style>body{font-family:sans-serif;background:#edf4fb;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding:20px}img{width:100%;background:white;aspect-ratio:4/3;object-fit:contain}</style>${items.map(item => `<img src="${escapeHtml(item.preview_url || item.url)}">`).join("")}`); } catch (error) { log(`预览失败：封面 JSON 格式错误：${error.message}`); } }
+function showCoverHoverPreview() {
+  const panel = $("coverHoverPreview");
+  try {
+    const items = JSON.parse($("covers").value || "[]").filter(item => item && item.url);
+    panel.innerHTML = items.length ? items.map(item => `<img src="${escapeHtml(item.preview_url || item.url)}" alt="配图预览">`).join("") : `<span class="preview-empty">当前没有可预览的配图</span>`;
+  } catch (error) {
+    panel.innerHTML = `<span class="preview-empty">封面 JSON 格式错误</span>`;
+  }
+  panel.classList.add("visible");
+}
+function hideCoverHoverPreview() { $("coverHoverPreview").classList.remove("visible"); }
 
 const wait = milliseconds => new Promise(resolve => setTimeout(resolve, milliseconds));
 async function publish() {
@@ -84,6 +95,7 @@ $("refresh").onclick = () => refresh().catch(error => log(`刷新失败：${erro
 $("newArticle").onclick = newArticle; $("copyArticle").onclick = () => copyArticle().catch(error => log(`复制失败：${error.message}`)); $("deleteArticle").onclick = () => deleteArticle().catch(error => log(`删除失败：${error.message}`)); $("moveUp").onclick = () => moveArticle(-1).catch(error => log(`排序失败：${error.message}`)); $("moveDown").onclick = () => moveArticle(1).catch(error => log(`排序失败：${error.message}`));
 $("addCookie").onclick = () => openCookieDialog("add"); $("editCookie").onclick = () => openCookieDialog("edit"); $("deleteCookie").onclick = deleteCookie; $("saveCookie").onclick = saveCookie;
 $("media").onclick = () => { $("mediaDialog").showModal(); loadMedia().catch(error => log(`图库加载失败：${error.message}`)); }; $("loadMedia").onclick = () => loadMedia().catch(error => log(`图库加载失败：${error.message}`)); $("useMedia").onclick = useMedia; $("preview").onclick = previewCovers;
+$("preview").addEventListener("mouseenter", showCoverHoverPreview); $("preview").addEventListener("mouseleave", () => setTimeout(() => { if (!$('coverHoverPreview').matches(':hover')) hideCoverHoverPreview(); }, 120)); $("coverHoverPreview").addEventListener("mouseleave", hideCoverHoverPreview);
 $("content").addEventListener("paste", event => { event.preventDefault(); const text = (event.clipboardData || window.clipboardData).getData("text"); const value = text.includes("<br/>") ? text : text.replace(/\r\n|\r|\n/g, "<br/>\n"); document.execCommand("insertText", false, value); });
 document.querySelectorAll("[data-close]").forEach(element => element.onclick = () => $("mediaDialog").close()); document.querySelectorAll("[data-cookie-close]").forEach(element => element.onclick = () => $("cookieDialog").close());
 window.addEventListener("keydown", event => { if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "s") { event.preventDefault(); saveCurrent().catch(error => log(`保存失败：${error.message}`)); } if (event.key === "F5") { event.preventDefault(); refresh().catch(error => log(`刷新失败：${error.message}`)); } });
